@@ -40,7 +40,10 @@ def collect_loot(loot_options, belt):
               @@@@@@@@@@@@          
               """
     print(ascii_image3)
-
+    loot_roll = random.choice(range(1, len(loot_options + 1)))
+    loot = loot_options.pop(loot_roll - 1)
+    belt.append(loot)
+    return loot_options, belt
 
 
 # Hero's Attack Function
