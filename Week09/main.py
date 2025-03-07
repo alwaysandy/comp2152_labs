@@ -17,6 +17,7 @@ input_valid = False
 # Loop to get valid input for Hero Combat Strength
 i = 0
 while not input_valid and i in range(5):
+<<<<<<< HEAD
     try:
         combat_strength = input("Enter your combat Strength (1-6): ")
 
@@ -36,10 +37,29 @@ while not input_valid and i in range(5):
             input_valid = True
     except ValueError:
         print("Exception: Invalid input. Use integer value")
+=======
+    combat_strength = input("Enter your combat Strength (1-6): ")
+
+    # Validate input: Check if the string inputted is numeric
+    if not combat_strength.isnumeric():
+        # If one of the inputs are invalid, print error message and halt
+        print("One or more invalid inputs. Player needs to enter integer numbers for Combat Strength")
+        i = i + 1
+
+    # Note: Now safe to cast combat_strength to integer
+    # Validate input: Check if the string inputted
+    elif int(combat_strength) not in range(1, 7):
+        print("Enter a valid integer between 1 and 6 only")
+        i = i + 1
+
+    else:
+        input_valid = True
+>>>>>>> 77396cc66f50885c51d4884fd12ce6eb19e7f6a0
 
 m_input_valid = False
 
 while not m_input_valid and i in range(5):
+<<<<<<< HEAD
     try:
         m_combat_strength = input("Enter the monster's combat Strength (1-6): ")
 
@@ -58,6 +78,23 @@ while not m_input_valid and i in range(5):
             m_input_valid = True
     except ValueError:
         print("Exception: Invalid Input. Please enter integer.")
+=======
+    m_combat_strength = input("Enter the monster's combat Strength (1-6): ")
+
+    # Validate input: Check if the string inputted is numeric
+    if not m_combat_strength.isnumeric():
+        # If one of the inputs are invalid, print error message and halt
+        print("One or more invalid inputs. Monster needs to enter integer numbers for Combat Strength")
+        i = i + 1
+
+    # Note: Now safe to cast combat_strength to integer
+    # Validate input: Check if the string inputted
+    elif int(m_combat_strength) not in range(1, 7):
+        print("Enter a valid integer between 1 and 6 only")
+        i = i + 1
+    else:
+        m_input_valid = True
+>>>>>>> 77396cc66f50885c51d4884fd12ce6eb19e7f6a0
 
 if input_valid and m_input_valid:
     # Input was valid - broke out of while loop
@@ -79,11 +116,14 @@ input("Roll the dice for the monster's health points (Press enter)")
 m_health_points = random.choice(big_dice_options)
 print("Player rolled " + str(m_health_points) + " health points for the monster")
 
+<<<<<<< HEAD
 try:
     m_health_poins = function.hero_attacks("Something1", "Something2")
 except TypeError as te:
     print("Error Class: " + str(te))
 
+=======
+>>>>>>> 77396cc66f50885c51d4884fd12ce6eb19e7f6a0
 # Loop while the monster and the player are alive. Call fight sequence functions
 while m_health_points > 0 and health_points > 0:
     # Fight Sequence
@@ -92,6 +132,7 @@ while m_health_points > 0 and health_points > 0:
     attack_roll = random.choice(small_dice_options)
     if not (attack_roll % 2 == 0):
         input("You strike (Press enter)")
+<<<<<<< HEAD
         try:
             # Hero Attacks First
             m_health_points = function.hero_attacks(combat_strength, m_health_points)
@@ -101,6 +142,14 @@ while m_health_points > 0 and health_points > 0:
                 health_points = function.monster_attacks(m_combat_strength, health_points)
         except ValueError:
             print("Exception: Invalid Input. Use Integer values!")
+=======
+        # Hero Attacks First
+        m_health_points = function.hero_attacks(combat_strength, m_health_points)
+        if m_health_points != 0:
+            input("The monster strikes (Press enter)!!!")
+            # Monster Attacks Back
+            health_points = function.monster_attacks(m_combat_strength, health_points)
+>>>>>>> 77396cc66f50885c51d4884fd12ce6eb19e7f6a0
 
     else:
         # Monster Attacks First
